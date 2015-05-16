@@ -10,7 +10,12 @@
 
 function returnObjectLiteral() {
   //your code here
-  return undefined; //Modify ONLY this line
+    return {
+    type: "Goldfish",
+    brand: "Pepperidge Farm",
+    flavor: "Cheddar",
+    count: 2000
+    }; //Modify ONLY this line
   //end your code
 }
 
@@ -24,9 +29,7 @@ function returnObjectLiteral() {
 * In addition, the following methods should be
 * callable on a MessageLog object:
 * logMessage( {string} messageText, {number} direction) - This should log a
-* message
-* as either being sent or received. A direction of 0 indicates it is a message
-* the user sent. A direction of 1 indicates it is a message the user received.
+* message as either being sent or received. A direction of 0 indicates it is a message the user sent. A direction of 1 indicates it is a message the user received.
 * Behavior for other numbers is undefined.
 * getSentMessage({number} n) - returns as a string, the content of the nth most
 * recently sent message. To conserve memory, the object should only keep the
@@ -38,6 +41,39 @@ function returnObjectLiteral() {
 */
 
 //your code here
+function MessageLog(user){
+    this.user = user;
+    this.sentMessages = new Array();
+    this.receivedMessage = null;
+    this.totalSent = 0;
+    this.totalReceived = 0;
+}
+
+MessageLog.prototype.logMessage = function(messageText, direction){
+    if (direction == 1){
+        this.totalSent++;
+        for (i=0; i < 5; i++){
+            this.sentMessages[i] = this.sentMessages[i+1]
+        }
+        this.sentMessages[5] = null;
+        this.sentMessages[0] = messageText;
+    }
+    else (direction == 0){
+        this.totalReceived++;
+        this.receivedMessage = messageText;
+    }
+}
+MessageLog.prototype.getSentMessage = function(n){
+    return this.sentMessages[n];
+}
+MessageLog.prototype.totalSent(){
+    return this.totalSent;
+}
+MessageLog.prototype.totalReceived(){
+    return this.totalReceived;
+}
+
+
 
 //end your code
 
@@ -47,7 +83,9 @@ function returnObjectLiteral() {
 * received.
 */
 //your code here
-
+MessageLog.prototype.lastReceivedMessage(){
+    return this.receivedMessage;
+}
 //end your code
 
 /**
@@ -57,5 +95,9 @@ function returnObjectLiteral() {
 */
 
 //your code here
+myLog = new MessageLog("BlackHatGuy");
+myLog.prototype.logMessage("foo", 0);
+myLog.prototype.logMessage("bar", 0);
+myLog.prototype.logMessage("baz", 0);
 
 //end your code

@@ -1,1 +1,23 @@
-You log goes in this  file.
+Cera Olson
+Assignment 3 Log
+
+- Due to work constraints and the multiple stresses and chaos that has currently been occurring at work, I have fallen behind on my homework for these courses. I have submitted all these assignments and hope for some leniency in this matter. 
+
+15 May 1100:
+	Read up on project requirements
+	Working on syncing Github
+15 May 1300:
+	Created new repositories for the assignments, synced with Desktop
+15 May 1500:
+	Started on the programming for Assignment 3 Part 1
+16 May 1130:	
+	Started work on the Variables.js
+	Looked up typeof
+	Finished Variables.js
+	Debugging Variables.js
+	Passes all tests except Undefined in part 3
+16 May 1300
+	Started work on Objects.js
+	Researching Constructors
+	Base Object.js written
+	Starting debugging
