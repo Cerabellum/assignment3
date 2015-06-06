@@ -13,7 +13,9 @@
 */
 
 //your code here
-
+function uselessFunction(){
+    return null;
+};
 //end your code
 
 var bar = 'not a function';
@@ -30,7 +32,18 @@ var barType = typeof bar;
 */
 
 //your code here
-
+bar = function (doubleArray) {
+    for (i = 0; i < doubleArray.length; i++) {
+        doubleArray[i] = 2 * doubleArray[i];
+        if (isNaN(doubleArray[i]) == true) {
+            r = false;
+        }
+        else{
+            r = true;
+        }
+    }
+    return r;
+};
 //end your code
 
 /**
@@ -66,5 +79,37 @@ function GitLog(hash, date, message) {
 */
 
 //your code here
+/*
+var array = new GitLog();
+var split = new Array();
+var hash = new Array();
+var date = new Array();
+var message = new Array();
+
+function parseGit(logArray){
+    for(var i = 0; i < (logArray.length); i++) {
+        split = logArray[i].split(' ');
+        hash[i] = split[0];
+        date[i] = split[1] + " " + split[2] + " " + split[3] + " " + split[4] + " " + split[5] + " " + split[6];
+        message[i] = split[7];
+    }
+    var array = [hash, date, message];
+    return array;
+};
+*/
+function parseGit(logArray) {
+    var array = [];
+    var i;
+    var newLog;
+    for (i = 0; i < logArray.length; i++) {
+        newLog = new GitLog();
+        newLog.hash = logArray[i].split(' ')[0];
+        newLog.message = logArray[i].split('"')[1];
+        newLog.date = logArray[i].substring(logArray[i].indexOf(" ") + 1, logArray[i].indexOf(newLog.message) - 2);
+        newLog.date = new Date(newLog.date);
+        array.push(newLog);
+    }
+    return array;
+}
 
 //end your code

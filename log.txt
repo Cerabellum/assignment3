@@ -21,3 +21,13 @@ Assignment 3 Log
 	Researching Constructors
 	Base Object.js written
 	Starting debugging
+16 May 1515
+	Started Working on functions.
+	Functions written.
+	Debugging.
+	Parsing not working correctly.
+23 May 1140
+	Reviewing Code, Attempting to fix minor errors
+	In functions.js, the parseGit should be working correctly but continues to return an undefined value. 
+6 June 2300
+	Solving bugs in Assignment 3. Finishing up Assignment 3 Part 2.

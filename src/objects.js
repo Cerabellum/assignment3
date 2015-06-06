@@ -43,36 +43,35 @@ function returnObjectLiteral() {
 //your code here
 function MessageLog(user){
     this.user = user;
-    this.sentMessages = new Array();
-    this.receivedMessage = null;
-    this.totalSent = 0;
-    this.totalReceived = 0;
-}
+    this.sentMessages = [];
+    this.receivedMessage = [];
+    this.sentCount = 0;
 
-MessageLog.prototype.logMessage = function(messageText, direction){
-    if (direction == 1){
-        this.totalSent++;
-        for (i=0; i < 5; i++){
-            this.sentMessages[i] = this.sentMessages[i+1]
+
+    this.logMessage = function(messageText, direction){
+        if (direction == 0){
+            this.sentCount++;
+            for (i=5; i >0; i--){
+                this.sentMessages[i] = this.sentMessages[i-1]
+            }
+            this.sentMessages[5] = null;
+            this.sentMessages[0] = messageText;
         }
-        this.sentMessages[5] = null;
-        this.sentMessages[0] = messageText;
-    }
-    else (direction == 0){
-        this.totalReceived++;
-        this.receivedMessage = messageText;
-    }
-}
-MessageLog.prototype.getSentMessage = function(n){
-    return this.sentMessages[n];
-}
-MessageLog.prototype.totalSent(){
-    return this.totalSent;
-}
-MessageLog.prototype.totalReceived(){
-    return this.totalReceived;
-}
-
+        else if (direction == 1){
+            this.receivedMessage.unshift(messageText);
+        }
+    };
+    this.getSentMessage = function(n){
+        return this.sentMessages[n];
+    };
+    this.totalSent = function(){
+        return this.sentCount;
+    };
+    this.totalReceived = function(){
+        return this.receivedMessage.length;
+    };
+    
+};
 
 
 //end your code
@@ -83,8 +82,8 @@ MessageLog.prototype.totalReceived(){
 * received.
 */
 //your code here
-MessageLog.prototype.lastReceivedMessage(){
-    return this.receivedMessage;
+MessageLog.prototype.lastReceivedMessage = function(){
+    return this.receivedMessage[0];
 }
 //end your code
 
@@ -95,9 +94,9 @@ MessageLog.prototype.lastReceivedMessage(){
 */
 
 //your code here
-myLog = new MessageLog("BlackHatGuy");
-myLog.prototype.logMessage("foo", 0);
-myLog.prototype.logMessage("bar", 0);
-myLog.prototype.logMessage("baz", 0);
+var myLog = new MessageLog("BlackHatGuy");
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 
 //end your code

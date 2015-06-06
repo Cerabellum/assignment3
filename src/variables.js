@@ -48,8 +48,7 @@ return true if c is null, false otherwise
 */
 function isNull(c) {
   //your code here
-//    if (typeof c == 'Object'){
-    if (c == null){
+    if ((typeof c == "object") && !(c instanceof Object)) {
         return true;
     }
     return false;
